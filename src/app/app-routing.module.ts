@@ -1,7 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [];
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './security/auth-guard';
+const routes: Routes = [
+  {
+    path: '' , redirectTo:'login',
+    pathMatch:'full'
+  },
+  {
+    path:'admin/dashboard',
+    component:DashboardComponent, canActivate: [AuthGuard]
+  },
+  {
+    path:'login',
+    component:LoginComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

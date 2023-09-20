@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { UserLogin } from '../classes/user-login';
+import { UserLogin } from '../../classes/user-login';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -43,10 +43,9 @@ export class LoginComponent implements OnInit {
     }else{
       this.auth.login(loginData).subscribe(
         data => {
-          console.log(data);
           if(data.accessToken !=''){
             console.log("Ingresado")
-            this.router.navigate([''])
+            this.router.navigate(['admin/dashboard'])
           }
         },
         error =>{
@@ -72,8 +71,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  public get f():any{
+  public get f():any{ //Para poder manejar las validaciones en el form
     return this.myForm.controls;
   }
-
 }

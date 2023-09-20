@@ -10,7 +10,6 @@ import { ResponseLogin } from '../classes/response-login';
 export class AuthService {
 
   private urlAuth:string ="http://159.65.96.86:8080/services/auth/signin";
-  private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 
   private isLoggedIn: boolean = false; // Variable que verifica si se ha iniciado sesión
  
@@ -26,7 +25,12 @@ export class AuthService {
     );
   }
 
+
   logout(){
     this.isLoggedIn = false;
+  }
+
+  isLogin():boolean{
+    return this.isLoggedIn;
   }
 }
